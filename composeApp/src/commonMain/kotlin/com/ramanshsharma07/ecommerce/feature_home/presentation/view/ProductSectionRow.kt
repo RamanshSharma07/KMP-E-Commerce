@@ -1,5 +1,6 @@
 package com.ramanshsharma07.ecommerce.feature_home.presentation.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -16,7 +17,9 @@ import com.ramanshsharma07.ecommerce.feature_home.domain.model.ProductSection
 @Composable
 fun ProductSectionRow(
     section: ProductSection,
-    modifier: Modifier = Modifier
+    onNavigateToProducts: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    onNavigateToDetails: (String) -> Unit
 ) {
     Column(modifier = modifier) {
         Row(
@@ -33,7 +36,11 @@ fun ProductSectionRow(
                     fontWeight = FontWeight.Bold
                 )
             )
-            TextButton(onClick = { /* Handle "See All" click */ }) {
+            TextButton(
+                onClick = {
+                    onNavigateToProducts(section.title)
+                }
+            ) {
                 Text("See All")
             }
         }
@@ -42,7 +49,10 @@ fun ProductSectionRow(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(section.products) { product ->
-                ProductCard(product = product)
+                ProductCard(
+                    product = product,
+                    onNavigateToDetails = onNavigateToDetails
+                )
             }
         }
     }

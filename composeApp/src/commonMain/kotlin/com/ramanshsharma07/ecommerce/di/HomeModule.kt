@@ -16,16 +16,16 @@ expect fun platformModule(): Module
 val homeModule = module {
     // --- Data Layer ---
     // Use factory for the data source. We provide the Fake implementation here.
-    single<HomeRemoteDataSource> { FakeHomeRemoteDataSource() }
+    factory<HomeRemoteDataSource> { FakeHomeRemoteDataSource() }
 
     // Use factory for the repository, telling Koin to inject the HomeRemoteDataSource.
-    single<HomeRepository> { HomeRepositoryImpl(get()) }
+    factory<HomeRepository> { HomeRepositoryImpl(get()) }
 
     // --- Domain Layer ---
     // Use factory for the use case.
-    single { GetHomePageDataUseCase(get()) }
+    factory { GetHomePageDataUseCase(get()) }
 
     // --- Presentation Layer ---
     // Koin has a special 'viewModel' builder for ViewModels.
-    single { HomeViewModel(get()) }
+    factory { HomeViewModel(get()) }
 }

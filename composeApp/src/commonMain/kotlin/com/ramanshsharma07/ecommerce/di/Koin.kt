@@ -14,6 +14,8 @@ fun initKoin() {
         modules(
             appModule,
             homeModule,
+            productsModule,
+            productDetailsModule,
             platformModule()
         )
     }

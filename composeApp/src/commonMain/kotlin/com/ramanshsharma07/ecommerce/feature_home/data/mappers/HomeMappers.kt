@@ -1,22 +1,15 @@
 package com.ramanshsharma07.ecommerce.feature_home.data.mappers
 
 import com.ramanshsharma07.ecommerce.feature_home.data.dtos.HomePageResponseDto
-import com.ramanshsharma07.ecommerce.feature_home.data.dtos.ProductDto
+import com.ramanshsharma07.ecommerce.core.data.dtos.ProductDto
+import com.ramanshsharma07.ecommerce.core.data.mappers.toDomain
 import com.ramanshsharma07.ecommerce.feature_home.data.dtos.ProductSectionDto
 import com.ramanshsharma07.ecommerce.feature_home.data.dtos.PromotionBannerDto
-import com.ramanshsharma07.ecommerce.feature_home.domain.model.Product
+import com.ramanshsharma07.ecommerce.core.domain.model.Product
 import com.ramanshsharma07.ecommerce.feature_home.domain.model.ProductSection
 import com.ramanshsharma07.ecommerce.feature_home.domain.model.PromotionBanner
+import org.jetbrains.compose.resources.painterResource
 
-fun ProductDto.toDomain(): Product {
-    return Product(
-        id = this.id,
-        name = this.name,
-        price = this.price,
-        imageUrl = this.imageUrl,
-        isFavorite = this.isFavorite
-    )
-}
 
 fun PromotionBannerDto.toDomain(): PromotionBanner {
     return PromotionBanner(
