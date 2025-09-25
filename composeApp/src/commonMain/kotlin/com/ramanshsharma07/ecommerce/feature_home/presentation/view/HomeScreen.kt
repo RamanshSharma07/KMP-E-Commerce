@@ -21,13 +21,20 @@ import com.ramanshsharma07.ecommerce.feature_home.presentation.viewmodel.HomeVie
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun HomeScreen(onNavigateToProducts: (String) -> Unit, onNavigateToDetails: (String) -> Unit) {
+fun HomeScreen(
+    onNavigateToProducts: (String) -> Unit,
+    onNavigateToDetails: (String) -> Unit,
+    onNavigateToSettings: () -> Unit
+) {
     val viewModel: HomeViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
-            HomeTopBar(userName = "John William")
+            HomeTopBar(
+                userName = "John William",
+                onNavigateToSettings = onNavigateToSettings
+            )
         },
     ) { paddingValues ->
         Box(

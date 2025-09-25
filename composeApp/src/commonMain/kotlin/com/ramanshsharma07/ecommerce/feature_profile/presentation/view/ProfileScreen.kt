@@ -27,7 +27,9 @@ import com.ramanshsharma07.ecommerce.feature_profile.presentation.viewmodel.Prof
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    onNavigateToSettings: () -> Unit
+) {
     val viewModel: ProfileViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
 
@@ -65,11 +67,31 @@ fun ProfileScreen() {
 
                     // Menu Items
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        ProfileMenuItem(icon = Icons.Default.PersonOutline, text = "Profile", onClick = {})
-                        ProfileMenuItem(icon = Icons.Default.Settings, text = "Setting", onClick = {})
-                        ProfileMenuItem(icon = Icons.Default.MailOutline, text = "Contact", onClick = {})
-                        ProfileMenuItem(icon = Icons.Default.Share, text = "Share App", onClick = {})
-                        ProfileMenuItem(icon = Icons.AutoMirrored.Filled.HelpOutline, text = "Help", onClick = {})
+                        ProfileMenuItem(
+                            icon = Icons.Default.PersonOutline,
+                            text = "Profile",
+                            onClick = {}
+                        )
+                        ProfileMenuItem(
+                            icon = Icons.Default.Settings,
+                            text = "Setting",
+                            onClick = onNavigateToSettings
+                        )
+                        ProfileMenuItem(
+                            icon = Icons.Default.MailOutline,
+                            text = "Contact",
+                            onClick = {}
+                        )
+                        ProfileMenuItem(
+                            icon = Icons.Default.Share,
+                            text = "Share App",
+                            onClick = {}
+                        )
+                        ProfileMenuItem(
+                            icon = Icons.AutoMirrored.Filled.HelpOutline,
+                            text = "Help",
+                            onClick = {}
+                        )
                     }
 
                     Spacer(modifier = Modifier.weight(1f))

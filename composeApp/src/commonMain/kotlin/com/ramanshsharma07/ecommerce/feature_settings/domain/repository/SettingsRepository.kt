@@ -1,8 +1,9 @@
-package com.ramanshsharma07.ecommerce.feature_settings.domain.model
+package com.ramanshsharma07.ecommerce.feature_settings.domain.repository
 
 import com.ramanshsharma07.ecommerce.core.domain.DataError
-import com.ramanshsharma07.ecommerce.core.domain.Result
 import com.ramanshsharma07.ecommerce.core.domain.EmptyResult
+import com.ramanshsharma07.ecommerce.core.domain.Result
+import com.ramanshsharma07.ecommerce.feature_settings.domain.model.AppSettings
 
 interface SettingsRepository {
     /** Fetches the current application settings. */

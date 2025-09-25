@@ -5,7 +5,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ramanshsharma07.ecommerce.feature_cart.presentation.view.CartScreen
 import com.ramanshsharma07.ecommerce.feature_checkout.presentation.view.CheckoutScreen
@@ -13,6 +12,7 @@ import com.ramanshsharma07.ecommerce.feature_home.presentation.view.HomeScreen
 import com.ramanshsharma07.ecommerce.feature_products.presentation.view.ProductsScreen
 import com.ramanshsharma07.ecommerce.feature_profile.presentation.view.ProfileScreen
 import com.ramanshsharma07.ecommerce.feature_selected_product.presentation.view.ProductDetailsScreen
+import com.ramanshsharma07.ecommerce.feature_settings.presentation.view.SettingsScreen
 
 @Composable
 fun NavigationHost(
@@ -32,6 +32,9 @@ fun NavigationHost(
                     navController.navigate(Screen.Details().createRoute(productId))
                     println("Product ID: $productId")
                 },
+                onNavigateToSettings = {
+                    navController.navigate(Screen.Settings.route)
+                }
             )
         }
 
@@ -94,7 +97,19 @@ fun NavigationHost(
         }
 
         composable(Screen.Profile.route) {
-            ProfileScreen()
+            ProfileScreen(
+                onNavigateToSettings = {
+                    navController.navigate(Screen.Settings.route)
+                }
+            )
+        }
+
+        composable(Screen.Settings.route) {
+            SettingsScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
+                }
+            )
         }
     }
 

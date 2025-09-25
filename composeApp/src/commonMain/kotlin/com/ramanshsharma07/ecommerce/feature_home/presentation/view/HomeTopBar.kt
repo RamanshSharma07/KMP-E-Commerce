@@ -3,6 +3,7 @@ package com.ramanshsharma07.ecommerce.feature_home.presentation.view
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ import coil3.compose.AsyncImage
 @Composable
 fun HomeTopBar(
     userName: String,
+    onNavigateToSettings: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     TopAppBar(
@@ -50,10 +52,10 @@ fun HomeTopBar(
             }
         },
         actions = {
-            IconButton(onClick = { /* Handle notification click */ }) {
+            IconButton(onClick = onNavigateToSettings) {
                 Icon(
-                    imageVector = Icons.Outlined.Notifications,
-                    contentDescription = "Notifications",
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Settings",
                     modifier = Modifier.size(28.dp)
                 )
             }
