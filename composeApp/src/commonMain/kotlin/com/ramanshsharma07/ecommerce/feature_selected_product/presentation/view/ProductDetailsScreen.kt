@@ -59,7 +59,9 @@ fun ProductDetailsScreen(
                     ProductImageCarousel(
                         imageUrls = product.imageUrls,
                         isFavorite = product.isFavorite,
-                        onFavoriteClick = { /*TODO*/ },
+                        onFavoriteClick = {
+                            viewModel.onEvent(ProductDetailsEvent.FavoriteClicked)
+                        },
                         onNavigateBack = onNavigateBack
                     )
 

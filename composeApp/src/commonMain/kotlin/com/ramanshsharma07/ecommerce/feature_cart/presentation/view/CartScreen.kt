@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.ramanshsharma07.ecommerce.core.presentation.purple
 import com.ramanshsharma07.ecommerce.feature_cart.presentation.viewmodel.CartEvent
 import com.ramanshsharma07.ecommerce.feature_cart.presentation.viewmodel.CartViewModel
 import org.koin.compose.viewmodel.koinViewModel
@@ -20,7 +21,8 @@ import org.koin.compose.viewmodel.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToCheckout: () -> Unit
 ) {
     val viewModel: CartViewModel = koinViewModel()
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -43,11 +45,17 @@ fun CartScreen(
         },
         bottomBar = {
             Button(
-                onClick = { viewModel.onEvent(CartEvent.CheckoutClicked) },
+                onClick = {
+                    viewModel.onEvent(CartEvent.CheckoutClicked)
+                    onNavigateToCheckout()
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
-                    .height(56.dp)
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors().copy(
+                    containerColor = purple
+                )
             ) {
                 Text("Check Out")
             }

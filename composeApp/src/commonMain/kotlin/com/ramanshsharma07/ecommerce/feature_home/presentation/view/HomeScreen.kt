@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.ramanshsharma07.ecommerce.feature_home.presentation.viewmodel.HomeEvent
 import com.ramanshsharma07.ecommerce.feature_home.presentation.viewmodel.HomeViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -62,7 +63,10 @@ fun HomeScreen(onNavigateToProducts: (String) -> Unit, onNavigateToDetails: (Str
                         ProductSectionRow(
                             section = section,
                             onNavigateToProducts = onNavigateToProducts,
-                            onNavigateToDetails = onNavigateToDetails
+                            onNavigateToDetails = onNavigateToDetails,
+                            onFavoriteClick = { productId ->
+                                viewModel.onEvent(HomeEvent.OnFavoriteClick(productId))
+                            }
                         )
 
                         Spacer(modifier = Modifier.height(16.dp))

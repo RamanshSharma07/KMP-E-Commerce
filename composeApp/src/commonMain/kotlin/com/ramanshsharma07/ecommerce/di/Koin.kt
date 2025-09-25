@@ -17,6 +17,8 @@ fun initKoin() {
             productsModule,
             productDetailsModule,
             cartModule,
+            favoritesModule,
+            checkoutModule,
             platformModule()
         )
     }

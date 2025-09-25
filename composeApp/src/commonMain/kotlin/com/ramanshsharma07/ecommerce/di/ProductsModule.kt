@@ -24,7 +24,9 @@ val productsModule = module {
         ProductsViewModel(
             category = params.get(),
             getProductsUseCase = get(),
-            addProductToCartUseCase = get()
+            addProductToCartUseCase = get(),
+            getFavoritesIdsUseCase = get(),
+            toggleFavoriteUseCase = get()
         )
     }
 }

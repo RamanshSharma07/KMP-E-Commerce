@@ -19,14 +19,19 @@ import com.ramanshsharma07.ecommerce.core.presentation.purple
 fun ProductCard(
     product: Product,
     onNavigateToDetails: (String) -> Unit,
+    onFavoriteClick: (productId: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     BaseProductCard(
         product = product,
         modifier = modifier
             .width(180.dp),
-        onProductClick = { onNavigateToDetails(product.id) },
-        onFavoriteClick = { /* Handle favorite click */ }
+        onProductClick = {
+            onNavigateToDetails(product.id)
+        },
+        onFavoriteClick = {
+            onFavoriteClick(product.id)
+        }
     ) {
         Column(
             modifier = Modifier.padding(12.dp),

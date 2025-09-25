@@ -76,6 +76,9 @@ fun ProductsScreen(
                             onNavigateToDetails = onNavigateToDetails,
                             onAddToCartClick = {
                                 viewModel.onEvent(ProductsEvent.AddToCart(product.id))
+                            },
+                            onFavoriteClick = {
+                                viewModel.onEvent(ProductsEvent.OnFavoriteClick(product.id))
                             }
                         )
                     }

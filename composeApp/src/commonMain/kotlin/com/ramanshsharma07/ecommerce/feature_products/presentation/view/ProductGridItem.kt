@@ -45,6 +45,7 @@ fun ProductGridItem(
     product: Product,
     onNavigateToDetails: (String) -> Unit,
     onAddToCartClick: () -> Unit,
+    onFavoriteClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var justAdded by remember { mutableStateOf(false) }
@@ -66,7 +67,9 @@ fun ProductGridItem(
         onProductClick = {
             onNavigateToDetails(product.id)
         },
-        onFavoriteClick = { /* Handle favorite click */ }
+        onFavoriteClick = {
+            onFavoriteClick(product.id)
+        }
     ) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp, horizontal = 10.dp),

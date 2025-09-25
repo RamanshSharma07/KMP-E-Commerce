@@ -27,5 +27,11 @@ val homeModule = module {
 
     // --- Presentation Layer ---
     // Koin has a special 'viewModel' builder for ViewModels.
-    factory { HomeViewModel(get()) }
+    factory {
+        HomeViewModel(
+            getHomePageDataUseCase = get(),
+            getFavoritesIdsUseCase = get(),
+            toggleFavoriteUseCase = get()
+        )
+    }
 }

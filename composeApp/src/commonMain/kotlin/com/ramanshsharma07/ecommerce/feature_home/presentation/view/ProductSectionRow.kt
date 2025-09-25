@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.ramanshsharma07.ecommerce.core.presentation.purple
 import com.ramanshsharma07.ecommerce.feature_home.domain.model.ProductSection
 
 @Composable
@@ -19,6 +20,7 @@ fun ProductSectionRow(
     section: ProductSection,
     onNavigateToProducts: (String) -> Unit,
     modifier: Modifier = Modifier,
+    onFavoriteClick: (productId: String) -> Unit,
     onNavigateToDetails: (String) -> Unit
 ) {
     Column(modifier = modifier) {
@@ -41,7 +43,10 @@ fun ProductSectionRow(
                     onNavigateToProducts(section.title)
                 }
             ) {
-                Text("See All")
+                Text(
+                    text = "See All",
+                    color = purple
+                )
             }
         }
         LazyRow(
@@ -51,7 +56,8 @@ fun ProductSectionRow(
             items(section.products) { product ->
                 ProductCard(
                     product = product,
-                    onNavigateToDetails = onNavigateToDetails
+                    onNavigateToDetails = onNavigateToDetails,
+                    onFavoriteClick = onFavoriteClick
                 )
             }
         }
