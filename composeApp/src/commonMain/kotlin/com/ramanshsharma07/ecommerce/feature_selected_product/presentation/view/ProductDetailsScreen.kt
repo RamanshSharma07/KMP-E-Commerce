@@ -20,7 +20,8 @@ import org.koin.core.parameter.parametersOf
 @Composable
 fun ProductDetailsScreen(
     productId: String,
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToCart: () -> Unit
 ) {
     val viewModel: ProductDetailsViewModel = koinViewModel(
         parameters = { parametersOf(productId) }
@@ -31,7 +32,10 @@ fun ProductDetailsScreen(
         bottomBar = {
             ProductDetailsBottomBar(
                 onBuyNowClick = { /*TODO*/ },
-                onAddToCartClick = { /*TODO*/ }
+                onAddToCartClick = {
+                    viewModel.onEvent(ProductDetailsEvent.AddToCartClicked)
+                    onNavigateToCart()
+                }
             )
         }
     ) { paddingValues ->

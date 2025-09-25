@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.ramanshsharma07.ecommerce.feature_products.presentation.viewmodel.ProductsEvent
 import com.ramanshsharma07.ecommerce.feature_products.presentation.viewmodel.ProductsViewModel
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
@@ -72,7 +73,10 @@ fun ProductsScreen(
                     items(state.products) { product ->
                         ProductGridItem(
                             product = product,
-                            onNavigateToDetails = onNavigateToDetails
+                            onNavigateToDetails = onNavigateToDetails,
+                            onAddToCartClick = {
+                                viewModel.onEvent(ProductsEvent.AddToCart(product.id))
+                            }
                         )
                     }
                 }

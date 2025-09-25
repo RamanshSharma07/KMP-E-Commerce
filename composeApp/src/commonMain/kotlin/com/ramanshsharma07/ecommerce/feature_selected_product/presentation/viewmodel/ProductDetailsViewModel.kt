@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.ramanshsharma07.ecommerce.core.domain.onError
 import com.ramanshsharma07.ecommerce.core.domain.onSuccess
 import com.ramanshsharma07.ecommerce.core.presentation.toUiText
+import com.ramanshsharma07.ecommerce.feature_cart.domain.use_cases.AddProductToCartUseCase
 import com.ramanshsharma07.ecommerce.feature_selected_product.domain.use_cases.GetProductDetailsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +14,8 @@ import kotlinx.coroutines.launch
 
 class ProductDetailsViewModel(
     private val productId: String,
-    private val getProductDetailsUseCase: GetProductDetailsUseCase
+    private val getProductDetailsUseCase: GetProductDetailsUseCase,
+    private val addProductToCartUseCase: AddProductToCartUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(ProductDetailsState())
@@ -36,7 +38,9 @@ class ProductDetailsViewModel(
 
             }
             is ProductDetailsEvent.AddToCartClicked -> {
-
+                viewModelScope.launch {
+                    addProductToCartUseCase(productId)
+                }
             }
         }
     }

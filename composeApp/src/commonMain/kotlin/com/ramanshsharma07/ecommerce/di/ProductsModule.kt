@@ -23,7 +23,8 @@ val productsModule = module {
     factory { params ->
         ProductsViewModel(
             category = params.get(),
-            getProductsUseCase = get()
+            getProductsUseCase = get(),
+            addProductToCartUseCase = get()
         )
     }
 }

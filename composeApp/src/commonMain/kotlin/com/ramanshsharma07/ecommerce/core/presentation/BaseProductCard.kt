@@ -3,13 +3,21 @@ package com.ramanshsharma07.ecommerce.core.presentation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -102,7 +110,6 @@ fun getPainterForProduct(imageName: String): Painter {
         "smartwatch" -> painterResource(Res.drawable.smartwatch)
         "laptop" -> painterResource(Res.drawable.laptop)
         "backpack" -> painterResource(Res.drawable.backpack)
-//        "jeans" -> painterResource(Res.drawable.jeans)
         else -> painterResource(Res.drawable.placeholder)
     }
 }
