@@ -21,6 +21,7 @@ fun initKoin() {
             checkoutModule,
             profileModule,
             settingsModule,
+            searchModule,
             platformModule()
         )
     }

@@ -23,13 +23,13 @@ fun App() {
         Scaffold(
             bottomBar = {
                 when (currentRoute) {
-                    Screen.Home.route, Screen.Cart.route, Screen.Profile.route -> {
+                    Screen.Home.route, Screen.Search.route, Screen.Profile.route -> {
                         BottomNavBar(navController = navController)
                     }
                 }
             }
-        ) {
-            NavigationHost(navController)
+        ) { innerPadding ->
+            NavigationHost(navController, padding = innerPadding)
         }
 //        HomeScreen()
 //        ProductsScreen("most_popular") {}

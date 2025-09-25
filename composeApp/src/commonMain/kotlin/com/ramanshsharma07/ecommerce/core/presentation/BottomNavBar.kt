@@ -19,7 +19,8 @@ import com.ramanshsharma07.ecommerce.navigation.Screen
 fun BottomNavBar(navController: NavController) {
     val items = listOf(
         Screen.Home to Icons.Default.Home,
-        Screen.Cart to Icons.Default.ShoppingCart, // Placeholder for search
+        Screen.Search to Icons.Default.Search,
+        Screen.Cart to Icons.Default.ShoppingCart,
         Screen.Profile to Icons.Default.Person
     )
 
