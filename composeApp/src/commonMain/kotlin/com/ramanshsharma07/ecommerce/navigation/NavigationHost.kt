@@ -1,6 +1,7 @@
 package com.ramanshsharma07.ecommerce.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,11 +11,13 @@ import com.ramanshsharma07.ecommerce.feature_cart.presentation.view.CartScreen
 import com.ramanshsharma07.ecommerce.feature_checkout.presentation.view.CheckoutScreen
 import com.ramanshsharma07.ecommerce.feature_home.presentation.view.HomeScreen
 import com.ramanshsharma07.ecommerce.feature_products.presentation.view.ProductsScreen
+import com.ramanshsharma07.ecommerce.feature_profile.presentation.view.ProfileScreen
 import com.ramanshsharma07.ecommerce.feature_selected_product.presentation.view.ProductDetailsScreen
 
 @Composable
-fun NavigationHost() {
-    val navController = rememberNavController()
+fun NavigationHost(
+    navController: NavHostController
+) {
     NavHost(
         navController = navController,
         startDestination = Screen.Home.route
@@ -88,6 +91,10 @@ fun NavigationHost() {
                     navController.popBackStack()
                 }
             )
+        }
+
+        composable(Screen.Profile.route) {
+            ProfileScreen()
         }
     }
 
